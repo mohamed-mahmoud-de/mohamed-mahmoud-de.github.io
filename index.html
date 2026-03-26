@@ -971,7 +971,7 @@
     .hero-photo-wrap { width: 190px; height: 190px; }
     .hero-left { order: 2; padding: 0 20px 64px; }
     .hero-label { margin-bottom: 18px; }
-    .hero-name { font-size: 46px; letter-spacing: -2px; margin-bottom: 18px; word-break: break-word; overflow-wrap: break-word; }
+    .hero-name { font-size: 46px; letter-spacing: -2px; margin-bottom: 18px; }
     .hero-tagline { font-size: 14px; line-height: 1.65; margin-bottom: 28px; max-width: 100%; }
     .hero-cta { flex-direction: column; align-items: stretch; gap: 14px; }
     .btn-primary { width: 100%; justify-content: center; text-align: center; }
@@ -1065,6 +1065,7 @@
     .section-title { font-size: 30px; }
     .contact-headline { font-size: 32px; }
   }
+
 </style>
 </head>
 <body>
@@ -1114,6 +1115,7 @@
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">View Projects ↗</a>
       <a href="#contact" class="btn-secondary">Get in touch</a>
+      <a href="Mohamed_Mahmoud_DE_CV.pdf" download class="btn-secondary" style="display:inline-flex;align-items:center;gap:6px;">↓ Download CV</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -1218,7 +1220,7 @@
       </div>
       <div class="detail-row">
         <span class="detail-key">Email</span>
-        <span class="detail-val"><a href="mailto:pkmohamed22@gmail.com" style="color:inherit;text-decoration:none;">pkmohamed22@gmail.com</a></span>
+        <span class="detail-val"><a href="/cdn-cgi/l/email-protection#b0c0dbdddfd8d1ddd5d48282f0d7ddd1d9dc9ed3dfdd" style="color:inherit;text-decoration:none;"><span class="__cf_email__" data-cfemail="b7c7dcdad8dfd6dad2d38585f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a></span>
       </div>
     </div>
   </div>
@@ -1421,6 +1423,7 @@
   </div>
 </section>
 
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
@@ -1436,17 +1439,17 @@
         or just want to talk shop about distributed systems — I'm always up for it.
       </p>
       <div class="contact-links">
-        <a href="mailto:pkmohamed22@gmail.com" class="contact-item">
+        <a href="/cdn-cgi/l/email-protection#b8c8d3d5d7d0d9d5dddc8a8af8dfd5d9d1d496dbd7d5" class="contact-item">
           <div class="contact-item-icon">@</div>
           <div class="contact-item-info">
             <div class="contact-item-label">Email</div>
-            <div class="contact-item-val">pkmohamed22@gmail.com</div>
+            <div class="contact-item-val"><span class="__cf_email__" data-cfemail="daaab1b7b5b2bbb7bfbee8e89abdb7bbb3b6f4b9b5b7">[email&#160;protected]</span></div>
           </div>
         </a>
-        <a href="https://wa.me/201114070885" target="_blank" class="contact-item">
-          <div class="contact-item-icon">💬</div>
+        <a href="tel:01114070885" class="contact-item">
+          <div class="contact-item-icon">☎</div>
           <div class="contact-item-info">
-            <div class="contact-item-label">WhatsApp</div>
+            <div class="contact-item-label">Phone / WhatsApp</div>
             <div class="contact-item-val">01114070885</div>
           </div>
         </a>
@@ -1487,11 +1490,11 @@
           <label for="fmessage">Message</label>
           <textarea id="fmessage" rows="6" placeholder="Tell me about your project..."></textarea>
         </div>
-        <button class="form-submit" id="formSubmit" onclick="sendWhatsApp()">
-          Send via WhatsApp ↗
+        <button class="form-submit" id="formSubmit" onclick="sendEmail()">
+          Send Message ↗
         </button>
         <div class="form-success" id="formSuccess">
-          ✦ WhatsApp opened! I'll get back to you soon.
+          ✦ Message sent! I'll get back to you soon.
         </div>
       </div>
     </div>
@@ -1501,12 +1504,12 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-name">Mohamed Mahmoud<span>.</span></div>
-  <div class="footer-copy">© 2026 — Data Engineer</div>
+  <div class="footer-copy">© 2025 — Data Engineer</div>
 </footer>
 
-<script>
-  // ── Contact Form → WhatsApp ─────────────────────────────────
-  function sendWhatsApp() {
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Contact Form ────────────────────────────────────────────
+  function sendEmail() {
     var name    = document.getElementById('fname').value.trim();
     var email   = document.getElementById('femail').value.trim();
     var subject = document.getElementById('fsubject').value.trim();
@@ -1523,22 +1526,20 @@
       return;
     }
 
-    var text = 'Hi Mohamed! 👋\n\n'
-      + 'Name: ' + name + '\n'
-      + 'Email: ' + email + '\n'
-      + (subject ? 'Subject: ' + subject + '\n' : '')
-      + '\n' + message;
+    var body = 'Name: ' + name + '%0D%0AEmail: ' + email + '%0D%0A%0D%0A' + message;
+    var mailtoLink = 'mailto:pkmohamed22@gmail.com'
+      + '?subject=' + encodeURIComponent(subject || 'Portfolio Enquiry')
+      + '&body=' + body;
 
-    var waLink = 'https://wa.me/201114070885?text=' + encodeURIComponent(text);
-    window.open(waLink, '_blank');
+    window.location.href = mailtoLink;
 
     btn.disabled = true;
-    btn.textContent = 'Opening WhatsApp...';
+    btn.textContent = 'Opening mail app...';
     success.style.display = 'block';
 
     setTimeout(function() {
       btn.disabled = false;
-      btn.textContent = 'Send via WhatsApp ↗';
+      btn.textContent = 'Send Message ↗';
     }, 4000);
   }
 
