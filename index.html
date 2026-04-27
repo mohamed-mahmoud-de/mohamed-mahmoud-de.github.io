@@ -971,7 +971,7 @@
     .hero-photo-wrap { width: 190px; height: 190px; }
     .hero-left { order: 2; padding: 0 20px 64px; }
     .hero-label { margin-bottom: 18px; }
-    .hero-name { font-size: 46px; letter-spacing: -2px; margin-bottom: 18px; }
+    .hero-name { font-size: clamp(32px, 10.5vw, 46px); letter-spacing: -2px; margin-bottom: 18px; }
     .hero-tagline { font-size: 14px; line-height: 1.65; margin-bottom: 28px; max-width: 100%; }
     .hero-cta { flex-direction: column; align-items: stretch; gap: 14px; }
     .btn-primary { width: 100%; justify-content: center; text-align: center; }
@@ -1220,7 +1220,7 @@
       </div>
       <div class="detail-row">
         <span class="detail-key">Email</span>
-        <span class="detail-val"><a href="/cdn-cgi/l/email-protection#b0c0dbdddfd8d1ddd5d48282f0d7ddd1d9dc9ed3dfdd" style="color:inherit;text-decoration:none;"><span class="__cf_email__" data-cfemail="b7c7dcdad8dfd6dad2d38585f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a></span>
+        <span class="detail-val"><a href="mailto:pkmohamed22@gmail.com" style="color:inherit;text-decoration:none;">pkmohamed22@gmail.com</a></span>
       </div>
     </div>
   </div>
@@ -1439,11 +1439,11 @@
         or just want to talk shop about distributed systems — I'm always up for it.
       </p>
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#b8c8d3d5d7d0d9d5dddc8a8af8dfd5d9d1d496dbd7d5" class="contact-item">
+        <a href="mailto:pkmohamed22@gmail.com" class="contact-item">
           <div class="contact-item-icon">@</div>
           <div class="contact-item-info">
             <div class="contact-item-label">Email</div>
-            <div class="contact-item-val"><span class="__cf_email__" data-cfemail="daaab1b7b5b2bbb7bfbee8e89abdb7bbb3b6f4b9b5b7">[email&#160;protected]</span></div>
+            <div class="contact-item-val">pkmohamed22@gmail.com</div>
           </div>
         </a>
         <a href="tel:01114070885" class="contact-item">
@@ -1507,7 +1507,7 @@
   <div class="footer-copy">© 2025 — Data Engineer</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // ── Contact Form ────────────────────────────────────────────
   function sendEmail() {
     var name    = document.getElementById('fname').value.trim();
@@ -1526,15 +1526,16 @@
       return;
     }
 
-    var body = 'Name: ' + name + '%0D%0AEmail: ' + email + '%0D%0A%0D%0A' + message;
-    var mailtoLink = 'mailto:pkmohamed22@gmail.com'
-      + '?subject=' + encodeURIComponent(subject || 'Portfolio Enquiry')
-      + '&body=' + body;
+    var text = 'New message from portfolio:%0A%0A'
+      + 'Name: ' + encodeURIComponent(name) + '%0A'
+      + 'Email: ' + encodeURIComponent(email) + '%0A'
+      + 'Subject: ' + encodeURIComponent(subject || 'Portfolio Enquiry') + '%0A%0A'
+      + encodeURIComponent(message);
 
-    window.location.href = mailtoLink;
+    window.open('https://wa.me/201114070885?text=' + text, '_blank');
 
     btn.disabled = true;
-    btn.textContent = 'Opening mail app...';
+    btn.textContent = 'Opening WhatsApp...';
     success.style.display = 'block';
 
     setTimeout(function() {
