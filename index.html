@@ -4,6 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Mohamed Mahmoud — Data Engineer</title>
+<meta name="description" content="Mohamed Mahmoud — Data Engineer building ETL pipelines, data warehouses, and streaming systems with Python, SQL, Airflow, Spark and Kafka. Based in Egypt, available for work." />
+<meta name="author" content="Mohamed Mahmoud" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Mohamed Mahmoud — Data Engineer" />
+<meta property="og:description" content="ETL pipelines, data warehousing, and streaming systems. Python · SQL · Airflow · Spark · Kafka." />
+<meta property="og:image" content="me.jpg" />
+<meta name="twitter:card" content="summary" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0a0a'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='800' fill='%23e8ff47' text-anchor='middle'%3EMM%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -59,6 +68,18 @@
   }
   .cursor.visible { opacity: 1; }
   .cursor-ring.visible { opacity: 0.5; }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 300;
+    pointer-events: none;
+  }
 
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -253,6 +274,30 @@
     opacity: 0;
   }
   .hero-tagline strong { color: var(--text); font-weight: 400; }
+
+  .hero-typed {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent2);
+    letter-spacing: 0.06em;
+    margin: -16px 0 40px;
+    min-height: 20px;
+    opacity: 0;
+  }
+  .hero-typed::before {
+    content: '> ';
+    color: var(--muted);
+  }
+  .hero-typed .caret {
+    display: inline-block;
+    width: 8px;
+    background: var(--accent2);
+    animation: caret-blink 0.9s step-end infinite;
+  }
+  @keyframes caret-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
 
   .hero-cta {
     display: flex;
@@ -1065,6 +1110,7 @@
     .hero-label { margin-bottom: 18px; }
     .hero-name { font-size: clamp(32px, 10.5vw, 46px); letter-spacing: -2px; margin-bottom: 18px; }
     .hero-tagline { font-size: 14px; line-height: 1.65; margin-bottom: 28px; max-width: 100%; }
+    .hero-typed { font-size: 11px; margin: -10px 0 24px; }
     .hero-cta { flex-direction: column; align-items: stretch; gap: 14px; }
     .btn-primary { width: 100%; justify-content: center; text-align: center; }
     .hero-stats {
@@ -1149,6 +1195,7 @@
 <body>
 
 <div class="grid-bg"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -1194,6 +1241,7 @@
       structure, design the pipelines that carry it, and build the foundations
       that power real decisions.
     </p>
+    <div class="hero-typed"><span id="typedText"></span><span class="caret">&nbsp;</span></div>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary"><span>View Projects &#8599;</span></a>
       <a href="#contact" class="btn-secondary">Get in touch</a>
@@ -1201,16 +1249,16 @@
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num">4</div>
+        <div class="stat-num" data-count="4">0</div>
         <div class="stat-label">Shipped Projects</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">DEPI</div>
-        <div class="stat-label">Intern</div>
+        <div class="stat-num" data-count="100" data-suffix="+">0</div>
+        <div class="stat-label">Bots Shipped to Clients</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">2027</div>
-        <div class="stat-label">Graduating</div>
+        <div class="stat-num">DEPI</div>
+        <div class="stat-label">Data Engineer Intern</div>
       </div>
     </div>
   </div>
@@ -1720,6 +1768,14 @@ var revealObserver = new IntersectionObserver(function(entries) {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.gs-reveal').forEach(function(el) {
+  // Stagger siblings inside grids/lists so cards cascade in
+  var parent = el.parentElement;
+  var siblings = Array.prototype.filter.call(parent.children, function(c) {
+    return c.classList.contains('gs-reveal');
+  });
+  if (siblings.length > 1) {
+    el.style.transitionDelay = (siblings.indexOf(el) % 6) * 0.08 + 's';
+  }
   revealObserver.observe(el);
 });
 
@@ -1730,8 +1786,62 @@ heroTL
   .to('.hero-name', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.3')
   .to('.hero-tagline', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
   .to('.hero-cta', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-  .to('.hero-stats', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+  .to('.hero-typed', { opacity: 1, duration: 0.5, ease: 'power3.out', onComplete: startTyping }, '-=0.3')
+  .to('.hero-stats', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', onComplete: countUpStats }, '-=0.3')
   .to('.hero-photo-wrap', { opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out' }, '-=0.6');
+
+// ── TYPED ROTATING SPECIALTIES ────────────────────────────
+var typedPhrases = [
+  'building ETL pipelines with Airflow',
+  'designing star-schema warehouses',
+  'streaming events with Kafka + Spark',
+  'turning raw data into decisions'
+];
+var typedEl = document.getElementById('typedText');
+var tpIndex = 0, tpChar = 0, tpDeleting = false;
+
+function typeTick() {
+  var phrase = typedPhrases[tpIndex];
+  if (!tpDeleting) {
+    tpChar++;
+    typedEl.textContent = phrase.slice(0, tpChar);
+    if (tpChar === phrase.length) {
+      tpDeleting = true;
+      setTimeout(typeTick, 2200);
+      return;
+    }
+    setTimeout(typeTick, 55);
+  } else {
+    tpChar--;
+    typedEl.textContent = phrase.slice(0, tpChar);
+    if (tpChar === 0) {
+      tpDeleting = false;
+      tpIndex = (tpIndex + 1) % typedPhrases.length;
+      setTimeout(typeTick, 400);
+      return;
+    }
+    setTimeout(typeTick, 28);
+  }
+}
+function startTyping() { typeTick(); }
+
+// ── STAT COUNT-UP ─────────────────────────────────────────
+function countUpStats() {
+  document.querySelectorAll('.stat-num[data-count]').forEach(function(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / 1200, 1);
+      // ease-out cubic
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
 
 // Set initial states for hero animation
 gsap.set('.hero-label', { y: 20 });
@@ -1816,10 +1926,27 @@ document.addEventListener('mouseleave', function() {
   requestAnimationFrame(animateRing);
 })();
 
-// ── NAV SCROLL ────────────────────────────────────────────
+// ── NAV SCROLL + PROGRESS BAR + ACTIVE LINK ───────────────
+var progressEl = document.getElementById('scrollProgress');
+var navAnchors = document.querySelectorAll('.nav-links a');
+var navSections = Array.prototype.map.call(navAnchors, function(a) {
+  return document.querySelector(a.getAttribute('href'));
+});
+
 window.addEventListener('scroll', function() {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-});
+
+  var max = document.documentElement.scrollHeight - window.innerHeight;
+  progressEl.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+
+  var current = -1;
+  navSections.forEach(function(sec, i) {
+    if (sec && sec.getBoundingClientRect().top <= window.innerHeight * 0.4) current = i;
+  });
+  navAnchors.forEach(function(a, i) {
+    a.style.color = i === current ? 'var(--accent)' : '';
+  });
+}, { passive: true });
 </script>
 </body>
 </html>
