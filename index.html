@@ -842,6 +842,12 @@
     line-height: 1.6;
   }
 
+  /* ── CERTIFICATES ── */
+  #certificates {
+    border-top: 1px solid var(--border);
+    display: block;
+  }
+
   /* ── CONTACT ── */
   #contact {
     border-top: 1px solid var(--border);
@@ -1208,6 +1214,7 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#certificates">Certificates</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
@@ -1221,8 +1228,9 @@
   <a href="#skills"     onclick="closeMobileNav()">Skills</a>
   <a href="#projects"   onclick="closeMobileNav()">Projects</a>
   <a href="#services"   onclick="closeMobileNav()">Services</a>
-  <a href="#experience" onclick="closeMobileNav()">Experience</a>
-  <a href="#contact"    onclick="closeMobileNav()">Contact</a>
+  <a href="#experience"   onclick="closeMobileNav()">Experience</a>
+  <a href="#certificates" onclick="closeMobileNav()">Certificates</a>
+  <a href="#contact"      onclick="closeMobileNav()">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -1249,7 +1257,7 @@
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num" data-count="4">0</div>
+        <div class="stat-num" data-count="6">0</div>
         <div class="stat-label">Shipped Projects</div>
       </div>
       <div class="stat-item">
@@ -1283,6 +1291,8 @@
     <div class="marquee-item"><span>&#10022;</span> PostgreSQL</div>
     <div class="marquee-item"><span>&#10022;</span> Docker</div>
     <div class="marquee-item"><span>&#10022;</span> BeautifulSoup</div>
+    <div class="marquee-item"><span>&#10022;</span> Redis</div>
+    <div class="marquee-item"><span>&#10022;</span> AWS</div>
     <div class="marquee-item"><span>&#10022;</span> MongoDB</div>
     <div class="marquee-item"><span>&#10022;</span> Node.js</div>
     <div class="marquee-item"><span>&#10022;</span> SQL &amp; Python</div>
@@ -1293,7 +1303,8 @@
     <div class="marquee-item"><span>&#10022;</span> Apache Airflow</div>
     <div class="marquee-item"><span>&#10022;</span> PostgreSQL</div>
     <div class="marquee-item"><span>&#10022;</span> Docker</div>
-    <div class="marquee-item"><span>&#10022;</span> BeautifulSoup</div>
+    <div class="marquee-item"><span>&#10022;</span> Redis</div>
+    <div class="marquee-item"><span>&#10022;</span> AWS</div>
     <div class="marquee-item"><span>&#10022;</span> MongoDB</div>
     <div class="marquee-item"><span>&#10022;</span> Node.js</div>
   </div>
@@ -1311,24 +1322,21 @@
   <div class="about-grid">
     <div class="about-text gs-reveal">
       <p>
-        I'm <strong>Mohamed Mahmoud</strong>, a Data Engineer and Faculty of Science student
-        based in Egypt. I specialize in building the infrastructure that makes data useful —
-        from ingestion to transformation to delivery.
+        I'm <strong>Mohamed Mahmoud</strong>, a computer science student specializing in data
+        engineering, with hands-on experience building <em>ETL pipelines</em>, real-time alert
+        systems, and cloud-based data architectures. Based in Alexandria, Egypt.
       </p>
       <p>
-        What separates me from the crowd is my <em>analytical mindset</em>. I don't just push
-        data from point A to point B. I interrogate it — understanding its shape, its quirks,
-        its relationships — and design systems that respect that complexity.
+        Currently interning at the <strong>Digital Egypt Pioneers Initiative (DEPI)</strong>,
+        working with Apache Spark and AWS. Shipped three progressive versions of a
+        production-grade data pipeline — from a naive Python script to an Airflow-orchestrated
+        system to a <em>real-time Redis-backed alert layer</em>.
       </p>
       <p>
-        Whether I'm designing a star-schema warehouse, building a Kafka streaming pipeline,
-        or orchestrating workflows in Airflow, my goal is always the same: turn raw,
-        <strong>messy reality into clean, actionable intelligence</strong>.
-      </p>
-      <p>
-        Currently building toward my degree at the Faculty of Science while actively
-        working on real-world data engineering challenges. I believe the best engineers
-        learn by building — so that's exactly what I do.
+        Strong programming background from <strong>100+ shipped Discord bots</strong> and a
+        self-built AI bot generation platform. Whether I'm designing a star-schema warehouse,
+        building a Kafka streaming pipeline, or orchestrating workflows in Airflow, the goal
+        is always the same: turn <strong>messy reality into clean, actionable intelligence</strong>.
       </p>
     </div>
     <div class="about-details gs-reveal">
@@ -1441,6 +1449,18 @@
       <div class="skill-bar-wrap"><div class="skill-bar" style="width:45%"></div></div>
     </div>
     <div class="skill-card gs-reveal">
+      <span class="skill-icon">&#128308;</span>
+      <div class="skill-name">Redis</div>
+      <div class="skill-desc">In-memory data structures for sub-millisecond lookups, SET-based deduplication, and caching layers for real-time systems.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+    </div>
+    <div class="skill-card gs-reveal">
+      <span class="skill-icon">&#9729;</span>
+      <div class="skill-name">AWS</div>
+      <div class="skill-desc">Cloud infrastructure with S3 for data lake storage and EC2 for compute. Building data pipelines on AWS for analytical workloads.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:55%"></div></div>
+    </div>
+    <div class="skill-card gs-reveal">
       <span class="skill-icon">&#127858;</span>
       <div class="skill-name">BeautifulSoup</div>
       <div class="skill-desc">Web scraping with defensive parsing, pagination handling, and structured data extraction from HTML sources.</div>
@@ -1453,10 +1473,22 @@
       <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div>
     </div>
     <div class="skill-card gs-reveal">
+      <span class="skill-icon">&#128039;</span>
+      <div class="skill-name">Linux</div>
+      <div class="skill-desc">Command-line proficiency, shell scripting, server administration, and deploying data infrastructure on Linux environments.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+    </div>
+    <div class="skill-card gs-reveal">
       <span class="skill-icon">&#9881;</span>
       <div class="skill-name">Node.js</div>
       <div class="skill-desc">Backend service development, API integration, and building production platforms with MongoDB and third-party APIs.</div>
       <div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div>
+    </div>
+    <div class="skill-card gs-reveal">
+      <span class="skill-icon">&#9749;</span>
+      <div class="skill-name">Java</div>
+      <div class="skill-desc">Object-oriented programming, data structures, and algorithms. Strong foundation in OOP patterns and design principles.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
     </div>
   </div>
 </section>
@@ -1496,22 +1528,25 @@
     <a href="https://github.com/mohamed-mahmoud-de/Egypt-Job-Pipeline" target="_blank" class="project-item gs-reveal">
       <div class="project-num">02 &#8212;</div>
       <div class="project-content">
-        <div class="project-title">Egypt Jobs Pipeline <span class="tag" style="font-size:9px;vertical-align:middle;margin-left:8px;">V2 Shipped</span></div>
+        <div class="project-title">Egypt Jobs Pipeline <span class="tag" style="font-size:9px;vertical-align:middle;margin-left:8px;">V3 Complete</span></div>
         <p class="project-desc">
-          A multi-version ETL pipeline scraping Egyptian tech job listings from Wuzzuf. V1 was a
-          naive Python script. V2 is a full Apache Airflow DAG with 2-hour scheduling, exponential
-          backoff retries, Discord webhook alerting on failure and success, backfill support for
-          historical intervals, and a Streamlit dashboard for browsing and filtering jobs. V3 will
-          rebuild as a Kafka + Spark streaming system. The goal: demonstrate hands-on understanding
-          of why each tool exists by hitting the wall it was built to solve.
+          A three-version data pipeline scraping Egyptian tech job listings from Wuzzuf.
+          V1: naive Python script. V2: full Apache Airflow DAG with 2-hour scheduling,
+          exponential backoff retries, Discord webhook alerting, backfill support, and a
+          Streamlit dashboard. V3: a real-time alert layer — crash-proof polling loop
+          checking Wuzzuf every 3 minutes, Redis SET deduplication for sub-millisecond
+          seen-job lookups, keyword filters by role and seniority, and instant Discord
+          notifications on new listings. Each version was built by hitting the wall the
+          previous one couldn't solve.
         </p>
         <div class="project-tags">
           <span class="tag">Python</span>
           <span class="tag">Apache Airflow</span>
           <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
           <span class="tag">Streamlit</span>
-          <span class="tag">BeautifulSoup</span>
-          <span class="tag muted">Docker</span>
+          <span class="tag">Docker</span>
+          <span class="tag muted">BeautifulSoup</span>
           <span class="tag muted">ETL</span>
         </div>
       </div>
@@ -1521,14 +1556,12 @@
     <div class="project-item gs-reveal" style="cursor:default;">
       <div class="project-num">03 &#8212;</div>
       <div class="project-content">
-        <div class="project-title">Real-Time Streaming Data Pipeline <span class="tag" style="font-size:9px;vertical-align:middle;margin-left:8px;color:var(--accent2);border-color:var(--accent2);">Building</span></div>
+        <div class="project-title">Real-Time Streaming Data Pipeline <span class="tag" style="font-size:9px;vertical-align:middle;margin-left:8px;color:var(--accent2);border-color:var(--accent2);">In Progress</span></div>
         <p class="project-desc">
-          Currently designing a real-time streaming pipeline using Apache Kafka and Spark Structured
-          Streaming. Planned to ingest event data through Kafka topics, process with Spark Structured
-          Streaming using window-based aggregations, and write to Cassandra for low-latency
-          operational reads and Elasticsearch for search and aggregation. Currently in architecture
-          and producer design phase — the system is being intentionally built as a deep-dive learning
-          project to understand the trade-offs streaming makes versus batch.
+          Building an end-to-end streaming pipeline that ingests events through Kafka and processes
+          them with Spark Structured Streaming. Writing processed events to Cassandra for low-latency
+          reads and indexing to Elasticsearch for search and analytics. Designed around fault
+          tolerance, schema evolution, and horizontal scalability of each component.
         </p>
         <div class="project-tags">
           <span class="tag">Apache Kafka</span>
@@ -1559,6 +1592,41 @@
       </div>
       <div class="project-arrow">&#8599;</div>
     </a>
+
+    <div class="project-item gs-reveal" style="cursor:default;">
+      <div class="project-num">05 &#8212;</div>
+      <div class="project-content">
+        <div class="project-title">TAWSEEL &mdash; University Transportation App <span class="tag" style="font-size:9px;vertical-align:middle;margin-left:8px;">Shipped</span></div>
+        <p class="project-desc">
+          A campus transportation web app for Alexandria University students with interactive
+          route maps and live schedules. Designed a responsive UI tested across desktop and
+          mobile breakpoints.
+        </p>
+        <div class="project-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item gs-reveal" style="cursor:default;">
+      <div class="project-num">06 &#8212;</div>
+      <div class="project-content">
+        <div class="project-title">Five Nights at Faculty of Science <span class="tag" style="font-size:9px;vertical-align:middle;margin-left:8px;">Shipped</span></div>
+        <p class="project-desc">
+          A horror-puzzle game inspired by FNAF, built collaboratively in Unity. Implemented
+          dynamic lighting and audio systems for atmospheric gameplay, applying OOP patterns
+          and Git-based version control.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Unity</span>
+          <span class="tag">C#</span>
+          <span class="tag muted">OOP</span>
+          <span class="tag muted">Git</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1617,7 +1685,7 @@
     <div class="section-number">05</div>
   </div>
   <div class="edu-grid">
-    <div class="edu-card gs-reveal" style="grid-column: 1 / -1;">
+    <div class="edu-card gs-reveal">
       <div class="edu-period">2025 &#8212; Present</div>
       <div class="edu-institution">Digital Egypt Pioneers Initiative (DEPI)</div>
       <div class="edu-degree" style="margin-bottom:16px;">
@@ -1632,6 +1700,50 @@
         <span class="tag">AWS</span>
         <span class="tag">ETL</span>
         <span class="tag muted">Data Modeling</span>
+      </div>
+    </div>
+    <div class="edu-card gs-reveal">
+      <div class="edu-period">Jul 2025 &#8212; Oct 2025</div>
+      <div class="edu-institution">Teleperformance</div>
+      <div class="edu-degree" style="margin-bottom:16px;">
+        <strong style="color:var(--text);font-weight:400;">Customer Service Representative</strong><br><br>
+        Resolved customer issues across CRM platforms while meeting daily case-volume and quality
+        targets. Identified recurring issue patterns from case data and surfaced them to team leads
+        to improve resolution scripts.
+      </div>
+      <div class="project-tags">
+        <span class="tag muted">CRM</span>
+        <span class="tag muted">Communication</span>
+      </div>
+    </div>
+    <div class="edu-card gs-reveal">
+      <div class="edu-period">2023 &#8212; 2024</div>
+      <div class="edu-institution">Target for Marketing &amp; Collection</div>
+      <div class="edu-degree" style="margin-bottom:16px;">
+        <strong style="color:var(--text);font-weight:400;">Data Entry Supervisor</strong><br><br>
+        Supervised a data entry team handling large client datasets, enforcing accuracy and
+        consistency standards. Implemented validation checks and review procedures that reduced
+        downstream data correction work. Trained new hires on data entry workflows and quality
+        control practices.
+      </div>
+      <div class="project-tags">
+        <span class="tag muted">Data Quality</span>
+        <span class="tag muted">Team Lead</span>
+      </div>
+    </div>
+    <div class="edu-card gs-reveal">
+      <div class="edu-period">2022 &#8212; 2023</div>
+      <div class="edu-institution">Freelance Discord Bot Developer</div>
+      <div class="edu-degree" style="margin-bottom:16px;">
+        <strong style="color:var(--text);font-weight:400;">Self-Employed &mdash; Remote</strong><br><br>
+        Designed and shipped 100+ custom Discord bots covering moderation, music, automation,
+        and utility use cases. Built RESTful APIs in Node.js/Express with MongoDB for persistent
+        bot state and user data. Integrated third-party payment gateways and AI APIs for paying clients.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Node.js</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag muted">REST APIs</span>
       </div>
     </div>
   </div>
@@ -1663,6 +1775,39 @@
         method deeply informs how I approach data — with precision, skepticism, and a hunger
         for evidence-backed insights.
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-header gs-reveal">
+    <div>
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certificates</h2>
+    </div>
+    <div class="section-number">07</div>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card gs-reveal">
+      <div class="edu-period">2026</div>
+      <div class="edu-institution">Associate Data Engineer</div>
+      <div class="edu-degree">DataCamp &mdash; Professional certification validating core data engineering skills across SQL, Python, ETL, and cloud infrastructure.</div>
+    </div>
+    <div class="edu-card gs-reveal">
+      <div class="edu-period">2026</div>
+      <div class="edu-institution">Associate Data Engineer in SQL</div>
+      <div class="edu-degree">DataCamp &mdash; 28-hour career track covering database design, SQL optimization, data warehousing, and pipeline fundamentals.</div>
+    </div>
+    <div class="edu-card gs-reveal">
+      <div class="edu-period">2025</div>
+      <div class="edu-institution">Database Fundamentals</div>
+      <div class="edu-degree">Information Technology Institute (ITI) &mdash; Relational database design, normalization, indexing, and query optimization.</div>
+    </div>
+    <div class="edu-card gs-reveal">
+      <div class="edu-period">2024</div>
+      <div class="edu-institution">Python Programming for AI</div>
+      <div class="edu-degree">Alexandria University &mdash; Python fundamentals applied to artificial intelligence and data processing workflows.</div>
     </div>
   </div>
 </section>
